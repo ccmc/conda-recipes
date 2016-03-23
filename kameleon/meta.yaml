@@ -1,0 +1,32 @@
+package:
+  name: kameleon
+  version: 6.1.0
+
+source:
+  git_url: https://github.com/ccmc/ccmc-software.git
+  git_tag: Coordinate_Transformations
+
+requirements:
+  build:
+    - gcc [not osx]
+    - python
+    - hdf5
+    - cmake >=2.8
+    - cdf36
+    - boost 1.59.0
+    - swig
+
+  run:
+    - boost
+    - python
+    - cdf36
+
+build:
+  number: 0
+  binary_relocation: true
+  detect_binary_files_with_prefix: true
+
+
+about:
+  home: https://github.com/ccmc/ccmc-software.git
+  license:  BSD-like
