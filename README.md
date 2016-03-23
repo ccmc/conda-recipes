@@ -10,4 +10,6 @@ If you don't already have anaconda installed, get miniconda from the installers 
 
 Install anaconda-build:
 
-  conda install anaconda-client anaconda-build
+```
+  conda install anaconda-build
+```
