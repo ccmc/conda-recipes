@@ -48,7 +48,7 @@ cmake ${SRC_DIR}/kameleon-plus/trunk/kameleon-plus-working \
       -DPYTHON_INCLUDE_DIR=${PREFIX}/include/python${PY_VER} \
       -DPYTHON_EXECUTABLE=${PYTHON} \
       -DBUILD_JAVA=OFF \
-      -DBUILD_HDF5=OFF \
+      -DBUILD_HDF5=ON \
       -DCMAKE_INSTALL_PREFIX=${PREFIX} \
       -DINSTALL_CCMC_PYTHON_MODULE=ON 
 
