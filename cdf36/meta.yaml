@@ -1,0 +1,19 @@
+package:
+  name: cdf36
+  version: "3.6.1"
+
+source:
+  fn: cdf36_1-dist-all.tar.gz
+  url: http://cdaweb.gsfc.nasa.gov/pub/software/cdf/dist/cdf36_1/linux/cdf36_1-dist-all.tar.gz
+  md5: 9a2120adb512838742dbb344f96fdf3b
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - gcc 
+
+about:
+  home: http://cdf.gsfc.nasa.gov/
+  license: BSD-style (http://cdaweb.gsfc.nasa.gov/pub/software/cdf/dist/cdf36_1/linux/CDF_copyright.txt)
