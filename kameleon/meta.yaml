@@ -15,11 +15,14 @@ requirements:
     - cdf36
     - boost 1.59.0
     - swig
+    - numpy
+    - matplotlib
 
   run:
     - boost
     - python
     - cdf36
+    - hdf5
 
 build:
   number: 0

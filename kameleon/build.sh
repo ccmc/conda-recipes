@@ -28,15 +28,16 @@ fi
 echo "PWD:" $PWD
 echo "PREFIX:" ${PREFIX}
 ls ${PREFIX}/include/
-mkdir build
-cd build
+# mkdir build
+# cd build
 
 echo "current path:"$PWD
 echo "executable_rpath:"$executable_rpath
 
 
 # -DCMAKE_MACOSX_RPATH=${PREFIX}
-cmake ${SRC_DIR}/kameleon-plus/trunk/kameleon-plus-working \
+${PREFIX}/bin/cmake ${SRC_DIR}/kameleon-plus/trunk/kameleon-plus-working \
+      -DCMAKE_FIND_ROOT_PATH=${PREFIX} \
       -DCMAKE_C_COMPILER=${c_compiler} \
       -DCMAKE_CXX_COMPILER=${cpp_compiler} \
       -DCMAKE_CXX_FLAGS="-std=c++11" \
@@ -67,5 +68,5 @@ cmake ${SRC_DIR}/kameleon-plus/trunk/kameleon-plus-working \
 # 	-DCMAKE_INSTALL_PREFIX=/Users/apembrok/anaconda 
 # 	-DINSTALL_CCMC_PYTHON_MODULE=ON
 
-make -j${CPU_COUNT}
+make -j8
 make install
