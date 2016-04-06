@@ -23,6 +23,7 @@ if [ "$(uname)" == "Linux" ]; then
 	cpp_compiler=g++
 	executable_rpath=\\\${ORIGIN}/../../../../lib/ccmc/
 	PY_LIB="libpython${PY_VER}.so"
+      exe_linker_flags = "-Wl,-rpath,${PREFIX}/lib/ -L ${PREFIX}/lib"
 fi
 # export executable_rpath=../../lib/ccmc
 echo "PWD:" $PWD
@@ -45,6 +46,7 @@ ${PREFIX}/bin/cmake ${SRC_DIR}/kameleon-plus/trunk/kameleon-plus-working \
       -DBOOST_LIBRARYDIR=${PREFIX}/lib \
       -DBOOST_INCLUDEDIR=${PREFIX}/include/ \
       -DCMAKE_INSTALL_RPATH=${executable_rpath} \
+      -DCMAKE_EXE_LINKER_FLAGS=${exe_linker_flags} \
       -DPYTHON_LIBRARY=${PREFIX}/lib/${PY_LIB} \
       -DPYTHON_INCLUDE_DIR=${PREFIX}/include/python${PY_VER} \
       -DPYTHON_EXECUTABLE=${PYTHON} \
