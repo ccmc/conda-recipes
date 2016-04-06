@@ -21,7 +21,7 @@ fi
 if [ "$(uname)" == "Linux" ]; then
 	c_compiler=gcc
 	cpp_compiler=g++
-	executable_rpath=\${ORIGIN}/../../../../lib/ccmc/
+	executable_rpath=\\\${ORIGIN}/../../../../lib/ccmc/
 	PY_LIB="libpython${PY_VER}.so"
 fi
 # export executable_rpath=../../lib/ccmc
