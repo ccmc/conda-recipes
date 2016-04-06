@@ -23,7 +23,7 @@ if [ "$(uname)" == "Linux" ]; then
 	cpp_compiler=g++
 	executable_rpath=\\\${ORIGIN}/../../../../lib/ccmc/
 	PY_LIB="libpython${PY_VER}.so"
-      exe_linker_flags = "-Wl,-rpath,${PREFIX}/lib/ -L ${PREFIX}/lib"
+      exe_linker_flags="-Wl,-rpath,${PREFIX}/lib/ -L ${PREFIX}/lib"
 fi
 # export executable_rpath=../../lib/ccmc
 echo "PWD:" $PWD
