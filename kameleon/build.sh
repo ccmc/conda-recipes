@@ -34,7 +34,7 @@ ls ${PREFIX}/include/
 
 echo "current path:"$PWD
 echo "executable_rpath:"$executable_rpath
-
+echo "exe_linker_flags:"$exe_linker_flags
 
 # -DCMAKE_MACOSX_RPATH=${PREFIX}
 ${PREFIX}/bin/cmake ${SRC_DIR}/kameleon-plus/trunk/kameleon-plus-working \

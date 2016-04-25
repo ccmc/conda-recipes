@@ -10,19 +10,19 @@ requirements:
   build:
     - gcc [not osx]
     - python
-    - hdf5
+    - hdf5 1.8.15.1 2
     - cmake >=2.8
     - cdf36
     - boost 1.59.0
     - swig
-    - numpy
-    - matplotlib
 
   run:
-    - boost
+    - boost 1.59.0
     - python
     - cdf36
-    - hdf5
+    - hdf5 1.8.15.1 2
+    - numpy
+    - matplotlib
 
 build:
   number: 0
@@ -31,5 +31,5 @@ build:
 
 
 about:
-  home: https://github.com/ccmc/ccmc-software.git
+  home: http://ccmc.gsfc.nasa.gov/downloads/Kameleon/Overview.html
   license:  BSD-like
