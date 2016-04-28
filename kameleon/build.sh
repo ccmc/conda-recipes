@@ -36,24 +36,29 @@ echo "current path:"$PWD
 echo "executable_rpath:"$executable_rpath
 echo "exe_linker_flags:"$exe_linker_flags
 
-# -DCMAKE_MACOSX_RPATH=${PREFIX}
+
+if [ "$(uname)" == "Linux" ]; then
+cmake ${SRC_DIR}/kameleon-plus/trunk/kameleon-plus-working -DBOOST_INCLUDEDIR=${PREFIX}/include -DBoost_NO_SYSTEM_PATHS=ON -DBOOST_LIBRARYDIR=${PREFIX}/lib -DCMAKE_INSTALL_PREFIX=${PREFIX} -DBUILD_JAVA=OFF -DINSTALL_CCMC_PYTHON_MODULE=ON -DCDF_PATH=${PREFIX} -DBUILD_HDF5=ON -DCMAKE_FIND_ROOT_PATH=${PREFIX}
+make -j8
+make install
+fi
+
+#note: turned off cpp11 flag
+if [ "$(uname)" == "Darwin" ]; then
 ${PREFIX}/bin/cmake ${SRC_DIR}/kameleon-plus/trunk/kameleon-plus-working \
-      -DCMAKE_FIND_ROOT_PATH=${PREFIX} \
-      -DCMAKE_C_COMPILER=${c_compiler} \
-      -DCMAKE_CXX_COMPILER=${cpp_compiler} \
-      -DCMAKE_CXX_FLAGS="-std=c++11" \
-      -DCDF_PATH=${PREFIX} \
-      -DBOOST_LIBRARYDIR=${PREFIX}/lib \
-      -DBOOST_INCLUDEDIR=${PREFIX}/include/ \
-      -DCMAKE_INSTALL_RPATH=${executable_rpath} \
-      -DCMAKE_EXE_LINKER_FLAGS=${exe_linker_flags} \
-      -DPYTHON_LIBRARY=${PREFIX}/lib/${PY_LIB} \
-      -DPYTHON_INCLUDE_DIR=${PREFIX}/include/python${PY_VER} \
-      -DPYTHON_EXECUTABLE=${PYTHON} \
-      -DBUILD_JAVA=OFF \
-      -DBUILD_HDF5=ON \
-      -DCMAKE_INSTALL_PREFIX=${PREFIX} \
-      -DINSTALL_CCMC_PYTHON_MODULE=ON 
+-DCMAKE_FIND_ROOT_PATH=${PREFIX} \
+-DCMAKE_C_COMPILER=${c_compiler} \
+-DCMAKE_CXX_COMPILER=${cpp_compiler} \
+-DCDF_PATH=${PREFIX} \
+-DBOOST_LIBRARYDIR=${PREFIX}/lib \
+-DBOOST_INCLUDEDIR=${PREFIX}/include/ \
+-DPYTHON_LIBRARY=${PREFIX}/lib/${PY_LIB} \
+-DPYTHON_INCLUDE_DIR=${PREFIX}/include/python${PY_VER} \
+-DPYTHON_EXECUTABLE=${PYTHON} \
+-DBUILD_JAVA=OFF \
+-DBUILD_HDF5=ON \
+-DCMAKE_INSTALL_PREFIX=${PREFIX} \
+-DINSTALL_CCMC_PYTHON_MODULE=ON 
 
 		
 # cmake -DCMAKE_CXX_FLAGS="-std=c++11" 
@@ -72,3 +77,5 @@ ${PREFIX}/bin/cmake ${SRC_DIR}/kameleon-plus/trunk/kameleon-plus-working \
 
 make -j8
 make install
+
+fi
