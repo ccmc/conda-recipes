@@ -4,12 +4,12 @@ package:
 
 source:
   git_url: https://github.com/ccmc/ccmc-software.git
-  git_tag: Coordinate_Transformations
+
 
 requirements:
   build:
-    - python
-    - hdf5 1.8.15.1 2
+    - python 
+    - hdf5 1.8.14
     - cmake >=2.8
     - cdf36
     - boost 1.59.0
@@ -17,9 +17,9 @@ requirements:
 
   run:
     - boost 1.59.0
-    - python
+    - python 
     - cdf36
-    - hdf5 1.8.15.1 2
+    - hdf5 1.8.14
     - numpy
     - matplotlib
 

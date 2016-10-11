@@ -7,3 +7,4 @@ for file in ${PREFIX}/bin/ccmc/examples/python/*.py; do sed -i '' '1i\
 echo "Making python scripts executable... "
 chmod a+x ${PREFIX}/bin/ccmc/examples/python/*.py
 
+#add pip install plotly?

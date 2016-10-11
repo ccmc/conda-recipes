@@ -17,6 +17,7 @@ if [ "$(uname)" == "Darwin" ]; then
 	cpp_compiler=clang++
 	executable_rpath=@loader_path/../../../../lib/ccmc/
 	PY_LIB="libpython${PY_VER}.dylib"
+	export MACOSX_DEPLOYMENT_TARGET="10.7"
 fi
 if [ "$(uname)" == "Linux" ]; then
 	c_compiler=gcc
@@ -43,15 +44,20 @@ make -j8
 make install
 fi
 
-#note: turned off cpp11 flag
+#note: turned cpp11 flag on
+# http://stackoverflow.com/questions/11972603/cmake-clang-and-cv11-on-os-x-10-8
 if [ "$(uname)" == "Darwin" ]; then
 ${PREFIX}/bin/cmake ${SRC_DIR}/kameleon-plus/trunk/kameleon-plus-working \
 -DCMAKE_FIND_ROOT_PATH=${PREFIX} \
 -DCMAKE_C_COMPILER=${c_compiler} \
 -DCMAKE_CXX_COMPILER=${cpp_compiler} \
+-DCMAKE_CXX_FLAGS="-std=c++11 -stdlib=libc++" \
+-DCMAKE_SHARED_LINKER_FLAGS="-Wl,-undefined,error -stdlib=libc++" \
+-DCMAKE_OSX_DEPLOYMENT_TARGET='10.7' \
 -DCDF_PATH=${PREFIX} \
 -DBOOST_LIBRARYDIR=${PREFIX}/lib \
--DBOOST_INCLUDEDIR=${PREFIX}/include/ \
+-DBOOST_INCLUDEDIR=${PREFIX}/include \
+-DBoost_NO_SYSTEM_PATHS=ON \
 -DPYTHON_LIBRARY=${PREFIX}/lib/${PY_LIB} \
 -DPYTHON_INCLUDE_DIR=${PREFIX}/include/python${PY_VER} \
 -DPYTHON_EXECUTABLE=${PYTHON} \
@@ -74,6 +80,22 @@ ${PREFIX}/bin/cmake ${SRC_DIR}/kameleon-plus/trunk/kameleon-plus-working \
 # 	-DBUILD_HDF5=OFF 
 # 	-DCMAKE_INSTALL_PREFIX=/Users/apembrok/anaconda 
 # 	-DINSTALL_CCMC_PYTHON_MODULE=ON
+
+# 
+# -DCMAKE_SHARED_LINKER_FLAGS="-Wl,-undefined,error" 
+# -DCMAKE_CXX_FLAGS="-std=c++11 -stdlib=libc++" 
+# -DCMAKE_MACOSX_RPATH=ON 
+# -DSWIG_EXECUTABLE=/Users/apembrok/miniconda2/envs/boost-python/bin/swig 
+# -DCMAKE_C_COMPILER=/usr/bin/clang 
+# -DCMAKE_CXX_COMPILER=/usr/bin/clang++ 
+# -DBOOST_LIBRARYDIR=/Users/apembrok/miniconda2/envs/boost-python/lib 
+# -DBOOST_INCLUDEDIR=/Users/apembrok/miniconda2/envs/boost-python/include 
+# -DBoost_NO_SYSTEM_PATHS=ON 
+# -DPYTHON_LIBRARY=/Users/apembrok/miniconda2/envs/boost-python/lib/libpython2.7.dylib 
+# -DPYTHON_INCLUDE_DIR=/Users/apembrok/miniconda2/envs/boost-python/include/python2.7 
+# -DPYTHON_EXECUTABLE=/Users/apembrok/miniconda2/envs/boost-python/bin/python2.7 
+# -DBUILD_JAVA=OFF -DBUILD_HDF5=OFF -DCMAKE_INSTALL_PREFIX=/Users/apembrok/miniconda2/envs/boost-python 
+# -DINSTALL_CCMC_PYTHON_MODULE=ON
 
 make -j8
 make install
