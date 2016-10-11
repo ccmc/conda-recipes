@@ -9,7 +9,8 @@ source:
 requirements:
   build:
     - python 
-    - hdf5 1.8.14
+    - hdf5 1.8.14 [osx]
+    - hdf5 1.8.15.1 2 [linux]
     - cmake >=2.8
     - cdf36
     - boost 1.59.0
@@ -19,7 +20,8 @@ requirements:
     - boost 1.59.0
     - python 
     - cdf36
-    - hdf5 1.8.14
+    - hdf5 1.8.14 [osx]
+    - hdf5 1.8.15.1 2 [linux]
     - numpy
     - matplotlib
 

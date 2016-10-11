@@ -8,6 +8,7 @@ specs:
    - python 2.7*
 
 channels:
+  - http://conda.anaconda.org/asherp
   - http://repo.continuum.io/pkgs/free/
 
 packages:
