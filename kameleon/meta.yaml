@@ -1,23 +1,25 @@
 package:
   name: kameleon
-  version: 6.1.0
+  version: 6.1.1
 
 source:
   git_url: https://github.com/ccmc/ccmc-software.git
 
-
 requirements:
   build:
+    - gcc 4.8*
     - python 
     - hdf5 1.8.14 [osx]
     - hdf5 1.8.15.1 2 [linux]
     - cmake >=2.8
     - cdf36
-    - boost 1.59.0
+    - boost 1.59.0 [osx]
+    - boost-python-gcc48 1.59.0 [linux]
     - swig
 
   run:
-    - boost 1.59.0
+    - boost 1.59.0 [osx]
+    - boost-python-gcc48 1.59.0 [linux]
     - python 
     - cdf36
     - hdf5 1.8.14 [osx]
