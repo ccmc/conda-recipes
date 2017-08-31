@@ -40,12 +40,12 @@ You can "activate" the environment with
 ```
 source activate mykameleon
 ```
-which will prepend *path/to/miniconda2/envs/mykameleon/bin* to **PATH**, set the environment variable **CONDA_ENV_PATH**, and prepend your prompt with **(mykameleon)**. 
+which will prepend *path/to/miniconda2/envs/mykameleon/bin* to **PATH**, set the environment variable **CONDA_PREFIX**, and prepend your prompt with **(mykameleon)**. 
 
 
 This allows you to run kameleon's version of python without writing out the full path. For example, we can print the help documentation for the ionosphere visualizer like this:
 ```
-(mykameleon)$ cd $CONDA_ENV_PATH/bin/ccmc/examples/python
+(mykameleon)$ cd $CONDA_PREFIX/bin/ccmc/examples/python
 (mykameleon)$ python ionosphere_test.py -h
 ```
 
